@@ -11,8 +11,12 @@ module: {
         },
     },
     {
-    test: /\.css$/,
-    use: ['style-loader', 'css-loader']
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+    },
+    {
+        test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot)$/i,
+        loaders: ['file-loader?hash=sha512&digest=hex&name=/images/[hash].[ext]']
     }
     ],
 

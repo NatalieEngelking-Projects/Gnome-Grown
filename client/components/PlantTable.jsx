@@ -1,5 +1,4 @@
 import React from 'react';
-import PlantTile from './PlantTile.jsx';
 import '../dist/main.css';
 
 class PlantTable extends React.Component {
@@ -8,23 +7,34 @@ class PlantTable extends React.Component {
   }
 
   render() {
+    if (this.props.clicked === true) {
+      return null
+    } else {
     return (
       <div>
-        <table className='plantTable table-bordered table-striped table-light' >
+        <table className='plantTable table-bordered table-striped table-dark' >
           <thead className='tableHead'>
             <tr>
               <td className='ID'>ID</td>
               <td className='commonName'>Common Name</td>
               <td className='scientificName'>Scientific Name</td>
-              <td className='link'>Link</td>
             </tr>
           </thead>
-            <PlantTile data={this.props.data}/>
-        </table>
-
+          <tbody className='tableBody'>
+          {this.props.plantData.map((each, i) => { 
+          return (
+            <tr key={i}>         
+              <td className='ID'>{each.id}</td>
+              <td className='commonName'>{each.common_name}</td>
+              <td className='scientificName'>{each.scientific_name}</td>
+            </tr>
+          )
+        })}
+        </tbody>
+      </table>
       </div>
     )
+    }
   }
 }
-
 export default PlantTable;

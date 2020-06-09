@@ -6,12 +6,14 @@ class Search extends React.Component {
     super(props)
   }
 
+
+
   render() {
     return (
       <div>
-        <form className='searchForm'>
-          <input type='text' name='search'/>
-          <input type='submit' value='Submit'/>
+        <form>
+          <input className='searchInput' type='text' name='search' onChange={this.props.handleChange}/>
+          <input className='searchSubmit' type='submit' value='Search' onClick={this.props.handleSubmit}/>
         </form>
       </div>
     )
