@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon ./server/index.js",
-    "build": "webpack -d --watch"
+    "build": "webpack -d --watch",
+    "database": "psql -U postgres < ./db/dataSeed.sql"
   },
   "repository": {
     "type": "git",
