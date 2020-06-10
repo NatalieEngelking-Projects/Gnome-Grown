@@ -41,7 +41,7 @@ class App extends React.Component {
       if (!each.scientific_name) { return null } 
       if (this.state.searchInput.toLowerCase() === each.scientific_name.toLowerCase()) {
         this.state.clicked = true;
-        fetch('http://localhost:3004/api/plants/126932')
+        fetch(`http://localhost:3004/api/plants/${each.id}`)
         .then (res => res.json())
         .then ((data) => {
           this.setState({

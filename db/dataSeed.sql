@@ -6,33 +6,33 @@ CREATE DATABASE gnomegrown WITH OWNER gnome;
 
 -----------connection to specifitcation
 CREATE TABLE max_height_at_base_age (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   inches FLOAT, 
   cm FLOAT
 );
 
 CREATE TABLE mature_height (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   inches FLOAT, 
   cm FLOAT
 );
 
 CREATE TABLE specifications (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   toxicity VARCHAR, 
   shape_and_orientation VARCHAR,
   regrowth_rate VARCHAR,
   nitrogen_fixation VARCHAR,
   low_growing_grass VARCHAR,
   lifespan VARCHAR,
-  leaf_retention VARCHAR,
+  leaf_retention BOOLEAN,
   known_allelopath VARCHAR, 
   growth_rate VARCHAR,
   growth_period VARCHAR,
   growth_habit VARCHAR,
   growth_form VARCHAR,
   fire_resistance VARCHAR,
-  fall_conspicuous VARCHAR,
+  fall_conspicuous BOOLEAN,
   coppice_potential VARCHAR,
   c_n_ratio VARCHAR,
   bloat VARCHAR,
@@ -43,48 +43,49 @@ CREATE TABLE specifications (
 
 ----------------connection to growth-----------------------
 CREATE TABLE temperature_min (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   deg_f FLOAT,
   deg_c FLOAT
 );
 
 CREATE TABLE root_depth_min (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   inches FLOAT,
   cm FLOAT
 );
 
 CREATE TABLE precipitation_min (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   inches FLOAT,
   cm FLOAT
 );
 
 CREATE TABLE precipitation_max (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   inches FLOAT,
   cm FLOAT
 );
 
 CREATE TABLE planting_density_min (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   sqm FLOAT,
   acre FLOAT
 );
 
 CREATE TABLE planting_density_max (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   sqm FLOAT,
   acre FLOAT
 );
 
 CREATE TABLE growth (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   ph_min FLOAT,
   ph_max FLOAT,
   moisture_use VARCHAR,
   frost_free_days_min VARCHAR,
   fertility_req VARCHAR,
+  resprout_ability BOOLEAN,
   cold_stratification_req VARCHAR,
   shade_tolerance VARCHAR, 
   salinity_tolerance VARCHAR,
@@ -106,13 +107,13 @@ CREATE TABLE growth (
 
 -- --connection to M_S
 CREATE TABLE flower (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   color VARCHAR(20),
   conspicuous BOOLEAN
 );
 
 CREATE TABLE foliage (
-  id INT PRIMARY KEY, 
+  id SERIAL PRIMARY KEY, 
   texture VARCHAR, 
   porosity_winter VARCHAR,
   porosity_summer VARCHAR,
@@ -120,17 +121,17 @@ CREATE TABLE foliage (
 );
 
 CREATE TABLE fruit_or_seed (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   seed_persistance VARCHAR,
   seed_period_end VARCHAR(7),
   seed_period_begin VARCHAR(7),
   seed_abundance VARCHAR,
-  conspicuous VARCHAR,
+  conspicuous BOOLEAN,
   color VARCHAR(20)
 );
 
 CREATE TABLE products (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   veneer VARCHAR,
   pulpwood VARCHAR, 
   protein_potential VARCHAR,
@@ -148,7 +149,7 @@ CREATE TABLE products (
 );
 
 CREATE TABLE propagation (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   tubers BOOLEAN,
   sprigs BOOLEAN,
   sod BOOLEAN,
@@ -161,7 +162,7 @@ CREATE TABLE propagation (
 );
 
 CREATE TABLE seed (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   speed_spread_rate VARCHAR,
   vegetative_spread_rate VARCHAR,
   small_grain VARCHAR,
@@ -172,7 +173,7 @@ CREATE TABLE seed (
 );
 
 CREATE TABLE soils_adaptation (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   fine BOOLEAN,
   medium BOOLEAN,
   coarse BOOLEAN
@@ -180,7 +181,7 @@ CREATE TABLE soils_adaptation (
 
 
 CREATE TABLE main_species (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   scientific_name VARCHAR,
   ms_year VARCHAR(4),
   ms_type VARCHAR,
@@ -204,28 +205,28 @@ CREATE TABLE main_species (
 
 -- connected to plant
 CREATE TABLE class (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   slug VARCHAR,
   class_name VARCHAR,
   link VARCHAR
 );
 
 CREATE TABLE division (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   slug VARCHAR,
   division_name VARCHAR,
   link VARCHAR
 );
 
 CREATE TABLE genus (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   slug VARCHAR,
   genus_name VARCHAR,
   link VARCHAR
 );
 
 CREATE TABLE family (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   slug VARCHAR,
   family_name VARCHAR,
   link VARCHAR,
@@ -233,7 +234,7 @@ CREATE TABLE family (
 );
 
 CREATE TABLE orders (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   slug VARCHAR,
   orders_name VARCHAR,
   link VARCHAR
@@ -242,7 +243,7 @@ CREATE TABLE orders (
 ---------
 
 CREATE TABLE plant (
-  id INT PRIMARY KEY, 
+  id SERIAL PRIMARY KEY, 
   native_status VARCHAR(50), 
   duration VARCHAR, 
   common_name VARCHAR(50),
@@ -257,32 +258,31 @@ CREATE TABLE plant (
 -- direct connection to P
 
 CREATE TABLE images (
-  id INT PRIMARY KEY, 
+  id SERIAL PRIMARY KEY, 
   image_url VARCHAR,
   plant_id INT REFERENCES plant(id)
 );
 
 CREATE TABLE varieties (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   plant_id INT REFERENCES plant(id),
   varieties_name VARCHAR
 );
 
 CREATE TABLE hybrid (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   plant_id INT REFERENCES plant(id),
   hybrid_name VARCHAR
 );
 
 CREATE TABLE forms (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   plant_id INT REFERENCES plant(id),
   forms_name VARCHAR
 );
 
 CREATE TABLE cultivars (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   plant_id INT REFERENCES plant(id),
   cultivars_name VARCHAR
 );
-
