@@ -33,7 +33,21 @@ app.get('/api/plants/:id', (req, res) => {
   .catch((err) => console.log(err)) 
 })
 
-////////////////////////////////////////////////////////API SCRAPE/////////////////////////////////////////////////////////////////////////////////////////////////
+app.get('/api/plants?common_name=:common_name', (req, res) => {
+  request(`https://trefle.io/api/plants?common_name=${req.params.common_name}`).auth(null, null, true, `${token}`)
+  .then((res) => JSON.parse(res))
+  .then((data) => {
+    res.send(JSON.stringify(data));
+  })
+  .catch((err) => console.log(err)) 
+})
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////API SCRAPE//////////////////////////////////////////////////////////////////////////////////////////////////
 
 //query to division
 //tables: division
@@ -81,17 +95,18 @@ app.get('/api/genuses', (req, res) => {
 //query to species
 //tables: species, specifications[ max_height_base_age, mature_height], soils_adaptation, seed, propagation, products, growth [temp_min, root_depth, preciptiation min&max, planting density min&max], fruit_or_seed, foliage, flower
 
-app.get('/api/species', (req, res) => {
-  request('https://trefle.io/api/species').auth(null, null, true, `${token}`)
-  .then((res) => JSON.parse(res))
-  .then((data) => {
-    data.map((each) => {
-      db.insertSpecies(each)
-  })
-  res.send('species insert complete');
-  })
-  .catch((err) => console.log(err)) 
-})
+// app.get('/api/species', (req, res) => {
+//   request('https://trefle.io/api/species').auth(null, null, true, `${token}`)
+//   .then((res) => JSON.parse(res))
+//   .then((data) => {
+//     data.map((each) => {
+//       db.insertPlant(each)
+//   })
+//   res.send(data)
+//   res.send('plant insert complete');
+//   })
+//   .catch((err) => console.log(err)) 
+// })
 
 
 
