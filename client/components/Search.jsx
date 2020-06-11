@@ -7,6 +7,11 @@ class Search extends React.Component {
   }
 
 
+//drop down
+//search for: 
+//plants based on climate, plants based on shade, plants based on sun, plants based on toxicity, plants based on lifespan, plants based on products, plants based on seed/fruit
+//plants based on duration (perennial/etc), plants based on foliage(&&/||) color, plants based on drought tolerance (need lots of watering)
+
 
   render() {
     return (

@@ -4,7 +4,7 @@ CREATE DATABASE gnomegrown WITH OWNER gnome;
 
 \c gnomegrown;
 
------------connection to specifitcation
+---------connection to specifitcation
 CREATE TABLE max_height_at_base_age (
   id SERIAL PRIMARY KEY,
   inches FLOAT, 
@@ -33,7 +33,7 @@ CREATE TABLE specifications (
   growth_form VARCHAR,
   fire_resistance VARCHAR,
   fall_conspicuous BOOLEAN,
-  coppice_potential VARCHAR,
+  coppice_potential BOOLEAN,
   c_n_ratio VARCHAR,
   bloat VARCHAR,
   max_height_at_base_age_id INT REFERENCES max_height_at_base_age(id),
@@ -41,7 +41,7 @@ CREATE TABLE specifications (
 );
 
 
-----------------connection to growth-----------------------
+-- ----------------connection to growth-----------------------
 CREATE TABLE temperature_min (
   id SERIAL PRIMARY KEY,
   deg_f FLOAT,
@@ -86,7 +86,7 @@ CREATE TABLE growth (
   frost_free_days_min VARCHAR,
   fertility_req VARCHAR,
   resprout_ability BOOLEAN,
-  cold_stratification_req VARCHAR,
+  cold_stratification_req BOOLEAN,
   shade_tolerance VARCHAR, 
   salinity_tolerance VARCHAR,
   hedge_tolerance VARCHAR,
@@ -104,8 +104,6 @@ CREATE TABLE growth (
 
 
 
-
--- --connection to M_S
 CREATE TABLE flower (
   id SERIAL PRIMARY KEY,
   color VARCHAR(20),
@@ -122,7 +120,7 @@ CREATE TABLE foliage (
 
 CREATE TABLE fruit_or_seed (
   id SERIAL PRIMARY KEY,
-  seed_persistance VARCHAR,
+  seed_persistance BOOLEAN,
   seed_period_end VARCHAR(7),
   seed_period_begin VARCHAR(7),
   seed_abundance VARCHAR,
@@ -136,7 +134,7 @@ CREATE TABLE products (
   pulpwood VARCHAR, 
   protein_potential VARCHAR,
   post VARCHAR,
-  palatable_human VARCHAR, 
+  palatable_human BOOLEAN, 
   palatable_grazing_animal VARCHAR,
   palatable_browse_animal VARCHAR,
   nursery_stock BOOLEAN,
@@ -180,14 +178,74 @@ CREATE TABLE soils_adaptation (
 );
 
 
-CREATE TABLE main_species (
+
+
+
+
+
+
+
+
+
+
+-- -----
+
+CREATE TABLE images (
+  id SERIAL PRIMARY KEY, 
+  image_url VARCHAR
+);
+
+
+--pulls from division portion of api/divisions
+CREATE TABLE division (
+  id INT PRIMARY KEY,
+  slug VARCHAR,
+  division_name VARCHAR
+);
+
+--pulls from genus portion of api/genuses
+CREATE TABLE genus (
+  id INT PRIMARY KEY,
+  slug VARCHAR,
+  genus_name VARCHAR,
+  link VARCHAR
+);
+
+--pulls from family portion of api/families
+CREATE TABLE family (
+  id INT PRIMARY KEY,
+  slug VARCHAR,
+  family_name VARCHAR,
+  link VARCHAR,
+  family_common_name VARCHAR
+);
+
+-- pulls from plant api/plants
+
+-- CREATE TABLE plant (
+--   id INT PRIMARY KEY,
+--   common_name VARCHAR,
+--   slug VARCHAR,
+--   link VARCHAR, 
+--   complete_data BOOLEAN,
+--   scientific_name VARCHAR,
+--   family_id INT REFERENCES family(id),
+--   genus_id INT REFERENCES genus(id),
+--   division_id INT REFERENCES divison(id),
+--   species_id INT REFERENCES species(id)
+-- );
+
+-- pulls from species /api/species
+CREATE TABLE species (
   id SERIAL PRIMARY KEY,
   scientific_name VARCHAR,
-  ms_year VARCHAR(4),
-  ms_type VARCHAR,
-  ms_synonym VARCHAR, 
-  ms_status VARCHAR, 
+  s_year VARCHAR(4),
+  s_type VARCHAR,
+  s_synonym VARCHAR, 
+  s_status VARCHAR, 
   slug VARCHAR, 
+  images_id INT,
+  main_species_id INT,
   is_main_species BOOLEAN,
   complete_data BOOLEAN,
   flower_id INT REFERENCES flower(id),
@@ -199,90 +257,4 @@ CREATE TABLE main_species (
   seed_id INT REFERENCES seed(id),
   soils_adaptation_id INT REFERENCES soils_adaptation(id),
   specifications_id INT REFERENCES specifications(id)
-);
-
-
-
--- connected to plant
-CREATE TABLE class (
-  id SERIAL PRIMARY KEY,
-  slug VARCHAR,
-  class_name VARCHAR,
-  link VARCHAR
-);
-
-CREATE TABLE division (
-  id SERIAL PRIMARY KEY,
-  slug VARCHAR,
-  division_name VARCHAR,
-  link VARCHAR
-);
-
-CREATE TABLE genus (
-  id SERIAL PRIMARY KEY,
-  slug VARCHAR,
-  genus_name VARCHAR,
-  link VARCHAR
-);
-
-CREATE TABLE family (
-  id SERIAL PRIMARY KEY,
-  slug VARCHAR,
-  family_name VARCHAR,
-  link VARCHAR,
-  family_common_name VARCHAR
-);
-
-CREATE TABLE orders (
-  id SERIAL PRIMARY KEY,
-  slug VARCHAR,
-  orders_name VARCHAR,
-  link VARCHAR
-);
-
----------
-
-CREATE TABLE plant (
-  id SERIAL PRIMARY KEY, 
-  native_status VARCHAR(50), 
-  duration VARCHAR, 
-  common_name VARCHAR(50),
-  class_id INT REFERENCES class(id), 
-  division_id  INT REFERENCES division(id), 
-  family_id INT REFERENCES family(id), 
-  genus_id INT REFERENCES genus(id), 
-  main_species_id INT REFERENCES main_species(id), 
-  order_id INT REFERENCES orders(id)
-);
-
--- direct connection to P
-
-CREATE TABLE images (
-  id SERIAL PRIMARY KEY, 
-  image_url VARCHAR,
-  plant_id INT REFERENCES plant(id)
-);
-
-CREATE TABLE varieties (
-  id SERIAL PRIMARY KEY,
-  plant_id INT REFERENCES plant(id),
-  varieties_name VARCHAR
-);
-
-CREATE TABLE hybrid (
-  id SERIAL PRIMARY KEY,
-  plant_id INT REFERENCES plant(id),
-  hybrid_name VARCHAR
-);
-
-CREATE TABLE forms (
-  id SERIAL PRIMARY KEY,
-  plant_id INT REFERENCES plant(id),
-  forms_name VARCHAR
-);
-
-CREATE TABLE cultivars (
-  id SERIAL PRIMARY KEY,
-  plant_id INT REFERENCES plant(id),
-  cultivars_name VARCHAR
 );

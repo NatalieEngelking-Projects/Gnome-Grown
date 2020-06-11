@@ -13,7 +13,8 @@ class App extends React.Component {
       searchInput: '',
       clicked: false,
       plantData: [],
-      searchData: {}
+      searchData: {},
+      divisionData: [],
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -78,7 +79,6 @@ class App extends React.Component {
   }
 
   render () {
-    console.log(this.state.searchData)
     return (
       <div className='background'>
         <img className='logo' src={image}/>

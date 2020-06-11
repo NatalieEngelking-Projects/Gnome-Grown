@@ -4,7 +4,7 @@ const cors = require ('cors')
 const bodyParser = require('body-parser');
 const token = require('../config.js')
 const request = require('request-promise')
-// const db = require('../db/db.js')
+const db = require('../db/db.js')
 const port = 3004;
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -33,23 +33,66 @@ app.get('/api/plants/:id', (req, res) => {
   .catch((err) => console.log(err)) 
 })
 
-// app.post('/api/plant/:id' , (req, res) => {
+////////////////////////////////////////////////////////API SCRAPE/////////////////////////////////////////////////////////////////////////////////////////////////
 
-//   //get the data 
-//   //insert it
-//   const newPlant = {
-//     id: req.body.id,
-//     scientific_name: req.body.scientific_name,
-//     native_status: req.body.native_status,
-//     family_common_name: req.body.family_common_name,
-//     duration: req.body.duration,
-//     common_name: req.body.common_name,
+//query to division
+//tables: division
+app.get('/api/divisions', (req, res) => {
+  request('https://trefle.io/api/divisions').auth(null, null, true, `${token}`)
+  .then((res) => JSON.parse(res))
+  .then((data) => {
+    data.map((each) => {
+        db.insertDivision(each)
+    })
+    res.send('division insert complete');
+  })
+  .catch((err) => console.log(err)) 
+})
 
-//   };
-// })
 
-//create an api get function as a helper, call it to get the data then post the data?
-//how to connect the database to the server whilst generating the tables?
+//query to families
+//tables: family
+app.get('/api/families', (req, res) => {
+  request('https://trefle.io/api/families').auth(null, null, true, `${token}`)
+  .then((res) => JSON.parse(res))
+  .then((data) => {
+    data.map((each) => {
+      db.insertFamily(each)
+  })
+  res.send('family insert complete');
+  })
+  .catch((err) => console.log(err)) 
+})
+
+//query to genus
+//tables: orders, class 
+app.get('/api/genuses', (req, res) => {
+  request('https://trefle.io/api/genuses').auth(null, null, true, `${token}`)
+  .then((res) => JSON.parse(res))
+  .then((data) => {
+    data.map((each) => {
+      db.insertGenus(each)
+  })
+  res.send('genus insert complete');
+  })
+  .catch((err) => console.log(err)) 
+})
+
+//query to species
+//tables: species, specifications[ max_height_base_age, mature_height], soils_adaptation, seed, propagation, products, growth [temp_min, root_depth, preciptiation min&max, planting density min&max], fruit_or_seed, foliage, flower
+
+app.get('/api/species', (req, res) => {
+  request('https://trefle.io/api/species').auth(null, null, true, `${token}`)
+  .then((res) => JSON.parse(res))
+  .then((data) => {
+    data.map((each) => {
+      db.insertSpecies(each)
+  })
+  res.send('species insert complete');
+  })
+  .catch((err) => console.log(err)) 
+})
+
 
 
 app.listen(port, () => {
