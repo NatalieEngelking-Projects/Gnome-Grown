@@ -40,7 +40,7 @@
 /* SEARCH */
 .searchInput {
   margin-top: 2rem;
-  margin-left: 50rem;
+  margin-left: 44%;
   margin-bottom: 2rem;
 }
 
@@ -79,4 +79,8 @@
   margin-right: auto;
   padding-top: 1rem;
   border-radius: 50%;
+}
+
+.dropdown {
+  margin-left: 46.5%;
 }

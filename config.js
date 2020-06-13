@@ -1,3 +1,11 @@
-const token = "eFptUnV5KzgzRWdmUm1hSkpodkt2Zz09";
+const dotenv = require('dotenv');
 
-module.exports = token
+dotenv.config();
+
+
+module.exports = {
+  token: process.env.TOKEN,
+  location: process.env.LOCATION
+};
+
+
