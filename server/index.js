@@ -25,14 +25,14 @@ app.get('/api/plants', (req, res) => {
 })
 
 
-// app.get('/api/plants/:id', (req, res) => {
-//     request(`${location}/plants?id=${req.params.id}&token=${token}`)
-//     .then((res) => JSON.parse(res))
-//     .then((data) => {
-//       res.send(data)
-//     })
-//     .catch((err) => console.log(err)) 
-// })
+app.get('/api/plants/:toxicity', (req, res) => {
+    request(`${location}/plants?toxicity=${req.params.toxicity}&token=${token}`)
+    .then((res) => JSON.parse(res))
+    .then((data) => {
+      res.send(data)
+    })
+    .catch((err) => console.log(err)) 
+})
 
 app.get('/api/plants/:id', (req, res) => {
   request(`https://trefle.io/api/plants/${req.params.id}`).auth(null, null, true, `${token}`)
