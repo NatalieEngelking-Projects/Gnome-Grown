@@ -57,7 +57,7 @@ class FilterSearch extends React.Component {
 render () {
   return (
     <div>
-      <input className='advancedSearch' type='submit' value='Advanced Search' onClick={this.props.handleClick}/>
+      {/* <input className='advancedSearch' type='submit' value='Advanced Search' onClick={this.props.handleClick}/> */}
       <Search plantData={this.props.plantData} handleChange={this.props.handleChange} handleSubmit={this.props.handleSubmit} searchInput={this.props.searchInput} advancedSearch={this.state.advancedSearch}/>
       <AdvancedSearch plantData={this.props.plantData} advancedSearch={this.props.advancedSearch} filterShadeTolerance={this.filterShadeTolerance}/>
     </div>
