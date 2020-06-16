@@ -1,7 +1,7 @@
 # Gnome-Grown
 
 HOMEPAGE
-<img src="C:\GitHub\Personal Projects\Gnome-Grown\Gnome-GrownHOMEPAGE.jpg">
+<img src="./Gnome-GrownHOMEPAGE.jpg">
 
 Summary
 Gnome-Grown is designed to help people design, build, and fill their gardens
