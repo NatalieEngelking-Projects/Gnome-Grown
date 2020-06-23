@@ -20,10 +20,11 @@ class Search extends React.Component {
       this.props.plantData.map((each) => {
         if (this.props.searchInput.toLowerCase() === each.common_name.toLowerCase()) {
           this.state.clicked = true;
-          // fetch(`http://localhost:3004/api/plants?common_name=${this.state.searchInput}`)
+          console.log(each.id)
           fetch(`http://localhost:3004/api/plants/${each.id}`)
           .then (res => res.json())
           .then ((data) => {
+            console.log(data)
                 this.setState({
                   searchData: {
                     id: data.id, 

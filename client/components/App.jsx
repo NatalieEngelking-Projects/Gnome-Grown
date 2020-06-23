@@ -48,10 +48,14 @@ class App extends React.Component {
   render () {
     return (
       <div className='background'>
+        <div className='gardenbox neg-30 topleft'></div>
+        <div className='gardenbox pos-30 topright'></div>
         <img className='logo' src={image}/>
-      <div className='header'>Gnome-Grown</div>
-      <FilterSearch plantData={this.state.plantData} searchInput={this.state.searchInput} searchData={this.state.searchData} advancedSearch={this.state.advancedSearch}
+        <div className='header'>Gnome-Grown</div>
+        <FilterSearch plantData={this.state.plantData} searchInput={this.state.searchInput} searchData={this.state.searchData} advancedSearch={this.state.advancedSearch}
       handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleClick={this.handleChange}/>
+      <div className='gardenbox pos-30 bottomleft'></div>
+      <div className='gardenbox neg-30 bottomright'></div>
       </div>
     )
   }

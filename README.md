@@ -12,7 +12,7 @@ Even as someone who has grown up digging around in the dirt I have always strugg
 Solution
 Gnome-Grown is still in the 'seedling' stages of existance, but currently contains the foundation for making any user's gardening plans successful. 
 
-IMAGE HERE <PLANT>
+<IMAGE HERE PLANT>
 
 Dig in by:
 If you are a developer looking to run this program on your own computer please know that you will need to go to https://trefle.io/ in order to grab a token key

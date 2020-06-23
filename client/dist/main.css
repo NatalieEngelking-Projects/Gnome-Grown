@@ -1,10 +1,55 @@
+@font-face {
+  font-family: traveling_typewriter;
+  src: 'C:/Users/Nat/Downloads/traveling_typewriter.ttf';
+}
 /* BACKGROUND */
 .background {
   background-color: rgb(128, 128, 0, 0.5);
+  border: 65px solid #843f16
 }
+
+/* http://barattobrothers.com/wp-content/uploads/2016/10/footer-wood-background.jpg <--URL FOR WOOD box concept */
+.gardenbox {
+  display: absolute;
+	width: 500px;
+	height: 80px;
+  background: #843f16;
+}
+
+.topright {
+margin-top: -5rem;
+margin-left: 79%;
+}
+
+.bottomright {
+  margin-left: 79%;
+  margin-bottom: 11rem;
+}
+
+.topleft {
+  margin-top: 11rem;
+  margin-left: -1rem;
+}
+
+.bottomleft {
+  margin-bottom: -5rem;
+  margin-left: -2rem;
+}
+
+.neg-30 {
+  transform: rotate(-45deg);
+
+}
+
+.pos-30 {
+  transform: rotate(45deg);
+
+}
+
 
 /* HEADER */
 .header {
+  font: traveling_typewriter;
   font-size: 50px;
   text-align: center;
   padding-bottom: 50px;
