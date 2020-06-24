@@ -130,3 +130,13 @@ margin-left: 79%;
 .dropdown {
   margin-left: 46.5%;
 }
+
+/* .btn.dropdown {
+  background: #00005f;
+  border-color: #00005f
+} */
+
+.dropdown.dropdown-toggle.btn.btn-primary {
+  background:#00005f !important;
+  border-color:#00005f !important;
+}

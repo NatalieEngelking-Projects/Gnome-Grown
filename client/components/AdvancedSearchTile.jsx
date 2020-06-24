@@ -3,6 +3,7 @@ import React from 'react';
 class AdvancedSearchTile extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.advancedSearchData)
   }
 
   render () {
