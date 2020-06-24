@@ -19,6 +19,7 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
+  //gets basic plant data as long as the plants common_name !== null
   componentDidMount () {
     fetch('http://localhost:3004/api/plants')
     .then(res => res.json())
@@ -39,6 +40,7 @@ class App extends React.Component {
     this.setState({advancedSearch: true})
   }
 
+  //handles common-name search
   handleChange (e) {
     e.preventDefault();
     this.setState({searchInput: e.target.value})
@@ -52,10 +54,10 @@ class App extends React.Component {
         <div className='gardenbox pos-30 topright'></div>
         <img className='logo' src={image}/>
         <div className='header'>Gnome-Grown</div>
-        <FilterSearch plantData={this.state.plantData} searchInput={this.state.searchInput} searchData={this.state.searchData} advancedSearch={this.state.advancedSearch}
-      handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleClick={this.handleChange}/>
-      <div className='gardenbox pos-30 bottomleft'></div>
-      <div className='gardenbox neg-30 bottomright'></div>
+          <FilterSearch plantData={this.state.plantData} searchInput={this.state.searchInput} searchData={this.state.searchData} advancedSearch={this.state.advancedSearch}
+          handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleClick={this.handleChange}/>
+        <div className='gardenbox pos-30 bottomleft'></div>
+        <div className='gardenbox neg-30 bottomright'></div>
       </div>
     )
   }

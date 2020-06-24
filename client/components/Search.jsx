@@ -9,22 +9,21 @@ class Search extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      clicked: false,
-      searchData: {}
+      clicked: false
     }    
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+
+  //refactor for when you click on the plant
   handleSubmit (e) {
     e.preventDefault()
       this.props.plantData.map((each) => {
         if (this.props.searchInput.toLowerCase() === each.common_name.toLowerCase()) {
           this.state.clicked = true;
-          console.log(each.id)
           fetch(`http://localhost:3004/api/plants/${each.id}`)
           .then (res => res.json())
           .then ((data) => {
-            console.log(data)
                 this.setState({
                   searchData: {
                     id: data.id, 
