@@ -3,10 +3,11 @@ import React from 'react';
 class AdvancedSearchTile extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.advancedSearchData)
+
   }
 
   render () {
+    console.log(this.props.shadeData)
     return (
       <div>
         advanced search tile
@@ -32,7 +33,7 @@ class AdvancedSearchTile extends React.Component {
         //seed/fruit
         //foliage flower color
         //drougt tolerance*/}
-      <table>
+      <table className='shadeTable table-bordered table-striped table-dark '>
         <tr>
           
         </tr>

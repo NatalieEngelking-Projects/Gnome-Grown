@@ -22,24 +22,7 @@ class FilterSearch extends React.Component {
 //   //if shade tolerance is === tolerant --> return 'needs shade'
 // }
 
-  //filterToxicity () {
 
-      //if toxicity === severe --> return toxic
-      //if toxicity === none --> return non-toxic
-  //}
-
-
-  // filterDuration () {
-  //   //filter by duration
-  // }
-
-  // filterColor () {
-  //   //filter by flower color
-  // }
-
-  // filterDroughtTolerance () {
-  //   //filter by tolerance
-  // }
 
 render () {
   return (
