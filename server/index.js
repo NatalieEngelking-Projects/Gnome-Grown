@@ -17,6 +17,8 @@ app.use(cors());
 //api connection:  https://trefle.io
 app.get('/api/plants', (req, res) => {
   // console.log('runs genereic')
+  console.log(location);
+  console.log(token)
     request(`${location}plants?page_size=2000&token=${token}`)
     .then((res) => JSON.parse(res))
     .then((data) => {
