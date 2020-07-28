@@ -15,10 +15,9 @@ app.use(bodyParser.json({limit: '2MB'}));
 app.use(cors());
 
 //api connection:  https://trefle.io
-app.get('/api/plants', (req, res) => {
+app.get('/api/v1/plants', (req, res) => {
   // console.log('runs genereic')
-  console.log(location);
-  console.log(token)
+
     request(`${location}plants?page_size=2000&token=${token}`)
     .then((res) => JSON.parse(res))
     .then((data) => {
@@ -30,7 +29,7 @@ app.get('/api/plants', (req, res) => {
 //search error where it doesn't pick up the id
 app.get('/api/plants/:id', (req, res) => {
   // console.log('gets runs id')
-  request(`https://trefle.io/api/plants/${req.params.id}`).auth(null, null, true, `${token}`)
+  request(`https://trefle.io/api/v1/plants/${req.params.id}`).auth(null, null, true, `${token}`)
   .then((res) => JSON.parse(res))
   .then((data) => {
     res.send(JSON.stringify(data));

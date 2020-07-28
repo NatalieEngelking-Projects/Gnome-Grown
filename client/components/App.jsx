@@ -21,10 +21,11 @@ class App extends React.Component {
 
   //gets basic plant data as long as the plants common_name !== null
   componentDidMount () {
-    fetch('http://localhost:3004/api/plants')
+    fetch('http://localhost:3004/api/v1/plants')
     .then(res => res.json())
     .then((plantsData) => {
-      plantsData.map((eachPlant) => {
+      console.log(plantsData)
+      plantsData.data.map((eachPlant) => {
         if (eachPlant.common_name !== null && this.state.plantData.length <= 30) {
           this.setState({ plantData: [...this.state.plantData, eachPlant] })
         }
