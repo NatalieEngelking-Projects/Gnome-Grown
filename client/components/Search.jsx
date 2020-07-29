@@ -26,29 +26,22 @@ class Search extends React.Component {
           fetch(`http://localhost:3004/api/plants/${each.id}`)
           .then (res => res.json())
           .then ((plant) => {
-            console.log(plant)
+            console.log(plant.data)
                 this.setState({
                   searchData: {
                     id: plant.data.id, 
                     common_name: plant.data.common_name, 
                     family_common_name: plant.data.family_common_name,
                     scientific_name: plant.data.scientific_name,
-                    // images: plant.data.main_species.images.url,
-                    native_status: plant.data.native_status,
-                    products: plant.data,
-                    lifespan: plant.data.main_species.specifications.lifespan,
                     duration: plant.data.main_species.specifications.duration,
-                    regrowth_rate: plant.data.main_species.specifications.regrowth_rate,
                     shape_and_orientation: plant.data.main_species.specifications.shape_and_orientation,
                     toxicity: plant.data.main_species.specifications.toxicity,
-                    hybrid: plant.data,
-                    soils_adaption: plant.data.main_species.soils_adaption,
-                    seed: plant.data.main_species.seed,
-                    propagation: plant.data.main_species.propagation,
+                    specifications: plant.data.main_species.specifications,
                     growth: plant.data.main_species.growth,
                     fruit_or_seed: plant.data.main_species.fruit_or_seed,
                     foliage: plant.data.main_species.foliage,
                     flower: plant.data.main_species.flower,
+                    image: plant.data.image_url,
                   }
                 })
           })

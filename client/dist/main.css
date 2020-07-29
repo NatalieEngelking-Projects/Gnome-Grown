@@ -100,6 +100,11 @@ margin-left: 79%;
   padding-bottom: 20rem;
 }
 
+.modalHead {
+  text-align: center;
+  padding: 5rem;
+}
+
 .modalInfo {
   text-align: center;
   padding: 5rem;
@@ -111,9 +116,18 @@ margin-left: 79%;
 }
 
 .modalTable {
+  margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
   width: 25rem;
+}
+
+.plantTileImage {
+  border-radius: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15%;
 }
 
 /* LOGO */
