@@ -60,13 +60,16 @@ margin-left: 79%;
 /* TABLE */
 .plantTable {
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
   margin-bottom: 5rem;
 }
 
-.ID {
-  padding: 5px;
-  text-align: center;
+
+.Image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 10%;
 }
 
 .commonName {
