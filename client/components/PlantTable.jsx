@@ -4,7 +4,7 @@ import '../dist/main.css';
 class PlantTable extends React.Component {
   constructor(props) {
     super(props)
-
+console.log(props)
   }
 
   render() {

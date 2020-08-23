@@ -17,7 +17,6 @@ app.use(cors());
 //api connection:  https://trefle.io
 app.get('/api/v1/plants', (req, res) => {
   // console.log('runs genereic')
-
     request(`${location}plants?page_size=2000&token=${token}`)
     .then((res) => JSON.parse(res))
     .then((data) => {
@@ -27,17 +26,26 @@ app.get('/api/v1/plants', (req, res) => {
 })
 
 //search error where it doesn't pick up the id
-app.get('/api/plants/:id', (req, res) => {
-  // console.log('gets runs id')
-  request(`https://trefle.io/api/v1/plants/${req.params.id}`).auth(null, null, true, `${token}`)
+// app.get('/api/plants/:id', (req, res) => {
+//   // console.log('gets runs id')
+//   request(`https://trefle.io/api/v1/plants/${req.params.id}`).auth(null, null, true, `${token}`)
+//   .then((res) => JSON.parse(res))
+//   .then((data) => {
+//     res.send(JSON.stringify(data));
+//   })
+//   .catch((err) => console.log(err)) 
+// })
+
+app.get('api/v1/plants/search/:common_name', (req, res) => {
+  console.log('hi')
+  console.log(token)
+  request(`https://trefle.io/api/v1/plants/search&q=${req.params.common_name}`).auth(null, null, true, `${token}`)
   .then((res) => JSON.parse(res))
   .then((data) => {
-    res.send(JSON.stringify(data));
+    res.send(JSON.stringify(data)) 
   })
-  .catch((err) => console.log(err)) 
+  .catch((err) => console.log(err))
 })
-
-
 //     request(`${location}/plants?toxicity=${req.params.toxicity}&token=${token}`)
 //     .then((res) => JSON.parse(res))
 //     .then((data) => {
