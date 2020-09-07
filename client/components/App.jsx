@@ -1,6 +1,4 @@
 import React from 'react';
-import PlantTable from './PlantTable.jsx';
-import PlantTile from './PlantTile.jsx';
 import FilterSearch from './FilterSearch.jsx';
 import image from '!!file-loader!./66487570.jpg';
 import '../dist/main.css';

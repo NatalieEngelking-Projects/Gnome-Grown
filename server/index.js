@@ -25,21 +25,19 @@ app.get('/api/v1/plants', (req, res) => {
     .catch((err) => console.log(err)) 
 })
 
-//search error where it doesn't pick up the id
-// app.get('/api/plants/:id', (req, res) => {
-//   // console.log('gets runs id')
-//   request(`https://trefle.io/api/v1/plants/${req.params.id}`).auth(null, null, true, `${token}`)
-//   .then((res) => JSON.parse(res))
-//   .then((data) => {
-//     res.send(JSON.stringify(data));
-//   })
-//   .catch((err) => console.log(err)) 
-// })
+// search error where it doesn't pick up the id
+app.get('/api/plants/:id', (req, res) => {
+  // console.log('gets runs id')
+  request(`https://trefle.io/api/v1/plants/${req.params.id}`).auth(null, null, true, `${token}`)
+  .then((res) => JSON.parse(res))
+  .then((data) => {
+    res.send(JSON.stringify(data));
+  })
+  .catch((err) => console.log(err)) 
+})
 
-app.get('api/v1/plants/search/:common_name', (req, res) => {
-  console.log('hi')
-  console.log(token)
-  request(`https://trefle.io/api/v1/plants/search&q=${req.params.common_name}`).auth(null, null, true, `${token}`)
+app.get('/api/v1/plants/search/:common_name', (req, res) => {
+  request(`https://trefle.io/api/v1/plants/search?token=${token}&q=${req.params.common_name}`)
   .then((res) => JSON.parse(res))
   .then((data) => {
     res.send(JSON.stringify(data)) 

@@ -79,6 +79,10 @@ margin-left: 79%;
   text-align: center;
 }
 
+.commonName:hover {
+  text-decoration: underline;
+}
+
 .scientificName {
   padding: 5px;
   padding-left:2rem;

@@ -26,7 +26,7 @@ console.log(props)
           return (
             <tr key={i}>         
               <td className='image'> <img className='Image' src={each.image_url} /> </td>
-              <td className='commonName'>{each.common_name}</td>
+              <td className='commonName' onClick={(e) => {e.preventDefault(); this.props.handleTableClick(each.common_name)}}>{each.common_name}</td>
               <td className='scientificName'>{each.scientific_name}</td>
             </tr>
           )
