@@ -9,43 +9,34 @@ class AdvancedSearch extends React.Component {
     this.state = {
       shadeData: [],
     }
+    console.log(props)
+    this.handleAdvancedLight = this.handleAdvancedLight.bind(this);
   }
 
-
-  //map through each plant
-  //query by id
-  //if SEARCH FACTOR === DESIRED RESULT
-  //dump it to a table
-handleAdvanced () {
-  this.props.plantData.map((eachPlant) => {
-    //fetch each plants data based on id
-    fetch(`http://localhost:3004/api/plants/${eachPlant.id}`)
+handleAdvancedLight (light) {
+  light = 1;
+  this.state.clicked = true;
+    fetch(`http://localhost:3004/api/plants/search_light/${light}`)
     .then (res => res.json())
-    .then ((data) => {
+    .then((plantData) => {
+      console.log(plantData)
       this.setState({
-        advancedSearchData: [...this.props.advancedSearchData, data] 
+        searchData: {
+          id: plantData.data.id, 
+          common_name: plantData.data.common_name, 
+          family_common_name: plantData.data.family_common_name,
+          scientific_name: plantData.data.scientific_name,
+          duration: plantData.data.main_species.specifications.duration,
+          shape_and_orientation: plantData.data.main_species.specifications.shape_and_orientation,
+          toxicity: plantData.data.main_species.specifications.toxicity,
+          specifications: plantData.data.main_species.specifications,
+          growth: plantData.data.main_species.growth,
+          fruit_or_seed: plantData.data.main_species.fruit_or_seed,
+          foliage: plantData.data.main_species.foliage,
+          flower: plantData.data.main_species.flower,
+          image: plantData.data.image_url,
+        }
       })
-    })
-    .catch (err => console.log(err))
-  })
-}
-
-handleAdvancedShade () {
-  this.props.plantData.map((eachPlant) => {
-    //fetch each plants data based on id
-    fetch(`http://localhost:3004/api/plants/${eachPlant.id}`)
-    .then (res => res.json())
-    .then ((data) => {
-      if (data.main_species.growth.shade_tolerance !== null) {
-        this.setState({shadeData: [...this.props.shadeData, data]})
-      } else {
-        console.log('Search for Shade Tolerance was unsuccessful')
-        // <div>Search for Shade Tolerance was unsuccessful</div>
-      }
-      // this.setState({
-      //   advancedSearchData: [...this.props.advancedSearchData, data] 
-      // })
-    })
     .catch (err => console.log(err))
   })
 }
@@ -56,10 +47,10 @@ handleAdvancedShade () {
         <div>
 
         <DropdownButton className='dropdown' id='dropdown' title='Advanced Search'>
-          <Dropdown.Item className='dropdownItem' href='#/climate' onClick={this.handleAdvanced.bind(this)}>Climate</Dropdown.Item>
+          <Dropdown.Item className='dropdownItem' href='#/climate' >Climate</Dropdown.Item>
           {/* <Dropdown.Item onClick={this.props.filterShadeTolerance}>Shade Tolerance </Dropdown.Item> */}
           <Dropdown.Item href='#/toxicity'>Toxicity</Dropdown.Item>
-          <Dropdown.Item href='#shadeTolerance' onClick={this.handleAdvancedShade.bind(this)}>Shade Tolerance</Dropdown.Item>
+          <Dropdown.Item href='#shadeTolerance'  onClick={(e) => {e.preventDefault(); this.handleAdvancedLight(1)}}>Light Tolerance </Dropdown.Item>
           <Dropdown.Item href='#/lifespan'>Lifespan</Dropdown.Item>
           <Dropdown.Item href='#/duration'>Duration</Dropdown.Item>
           {/* gonna need a sub filter for product type */}

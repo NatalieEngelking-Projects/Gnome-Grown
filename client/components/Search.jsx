@@ -19,7 +19,7 @@ class Search extends React.Component {
 handleTableClick (name) {
   console.log(name)
   this.state.clicked = true;
-  fetch(`http://localhost:3004/api/v1/plants/search/${name}`)
+  fetch(`http://localhost:3004/api/v1/plants/search_commonName/${name}`)
   .then(res => res.json())
   .then((plant) => {
     fetch(`http://localhost:3004/api/plants/${plant.data[0].id}`)

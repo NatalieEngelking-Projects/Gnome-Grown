@@ -36,7 +36,9 @@ app.get('/api/plants/:id', (req, res) => {
   .catch((err) => console.log(err)) 
 })
 
-app.get('/api/v1/plants/search/:common_name', (req, res) => {
+
+//query name
+app.get('/api/v1/plants/search_commonName/:common_name', (req, res) => {
   request(`https://trefle.io/api/v1/plants/search?token=${token}&q=${req.params.common_name}`)
   .then((res) => JSON.parse(res))
   .then((data) => {
@@ -44,13 +46,19 @@ app.get('/api/v1/plants/search/:common_name', (req, res) => {
   })
   .catch((err) => console.log(err))
 })
-//     request(`${location}/plants?toxicity=${req.params.toxicity}&token=${token}`)
-//     .then((res) => JSON.parse(res))
-//     .then((data) => {
-//       res.send(data)
-//     })
-//     .catch((err) => console.log(err)) 
-// })
+
+
+//advanced seach light
+app.get('/api/v1/plants/search_light/:light', (req, res) => {
+  request(`https://trefle.io/api/v1/plants/search?token=${token}&q[light]=${req.params.light}`)
+  .then((res) => JSON.parse(res))
+  .then((data) => {
+    res.send(JSON.stringify(data)) 
+  })
+  .catch((err) => console.log(err))
+})
+
+
 
 // app.get('/api/plants/:common_name', (req, res) => {
 //   request(`${location}/plants?${req.params.common_name}&token=${token}`)
