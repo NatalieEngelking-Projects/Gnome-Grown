@@ -6,11 +6,40 @@ class AdvancedSearchTile extends React.Component {
 
   }
 
-  render () {
-    console.log(this.props.shadeData)
-    return (
-      <div>
-        advanced search tile
+  render() {
+    if (this.props.advancedClicked === false ) {
+      return null
+    } else {
+      return (
+        <div>
+          <table className='plantTable table-bordered table-striped table-dark' >
+            <thead className='tableHead'>
+              <tr>
+                <td className='image'>Image</td>
+                <td className='commonName'>Common Name</td>
+                <td className='scientificName'>Scientific Name</td>
+              </tr>
+            </thead>
+            <tbody className='tableBody'>
+              {this.props.plantData.map((each, i) => {
+              return (
+                <tr key={i}>         
+                  <td className='image'> <img className='Image' src={each.image_url} /> </td>
+                  <td className='commonName' onClick={(e) => {e.preventDefault(); this.props.handleTableClick(each.common_name)}}>{each.common_name}</td>
+                  <td className='scientificName'>{each.scientific_name}</td>
+                </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+  }
+}
+
+export default AdvancedSearchTile;
+
         {/* generate information on advanced search
         //image
         //common name
@@ -33,17 +62,3 @@ class AdvancedSearchTile extends React.Component {
         //seed/fruit
         //foliage flower color
         //drougt tolerance*/}
-      <table className='shadeTable table-bordered table-striped table-dark '>
-        <tr>
-          
-        </tr>
-      </table>
-
-
-      </div>
-    )
-  }
-}
-
-export default AdvancedSearchTile;
-

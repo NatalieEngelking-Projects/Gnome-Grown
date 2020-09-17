@@ -59,18 +59,6 @@ app.get('/api/v1/plants/search_light/:light', (req, res) => {
 })
 
 
-
-// app.get('/api/plants/:common_name', (req, res) => {
-//   request(`${location}/plants?${req.params.common_name}&token=${token}`)
-//   .then((res) => JSON.parse(res))
-//   .then((data) => {
-//     res.send(JSON.stringify(data));
-//   })
-//   .catch((err) => console.log(err)) 
-// })
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////API SCRAPE//////////////////////////////////////////////////////////////////////////////////////////////////
 
 // //query to division

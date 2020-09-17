@@ -7,9 +7,9 @@ class FilterSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      advancedClick: false,
       searchData: {},
-      advancedSearchData: []
+      advancedSearchData: [],
+      advancedClick: false,
     }
     // this.filterShadeTolerance = this.filterShadeTolerance.bind(this))
   }
@@ -27,7 +27,7 @@ class FilterSearch extends React.Component {
 render () {
   return (
     <div>
-      <AdvancedSearch plantData={this.props.plantData} searchData={this.state.searchData} advancedSearch={this.props.advancedSearch} advancedSearchData={this.state.advancedSearchData} filterShadeTolerance={this.filterShadeTolerance}/>
+      <AdvancedSearch plantData={this.props.plantData} searchData={this.state.searchData} advancedSearch={this.props.advancedSearch} advancedSearchData={this.state.advancedSearchData} filterShadeTolerance={this.filterShadeTolerance} advancedClick={this.state.advancedClick}/>
       <Search plantData={this.props.plantData} searchData={this.state.searchData} handleChange={this.props.handleChange} handleSubmit={this.props.handleSubmit} searchInput={this.props.searchInput} advancedSearch={this.state.advancedSearch}/>
     </div>
   )
