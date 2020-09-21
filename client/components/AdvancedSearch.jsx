@@ -1,13 +1,12 @@
 import React from 'react';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
-import AdvancedSearchTile from './AdvancedSearchTile.jsx'
+import AdvancedSearchTable from './AdvancedSearchTable.jsx'
 import '../dist/main.css';
 
 class AdvancedSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      advancedClicked: false,
       lightData: [],
     }
     console.log(props)
@@ -15,7 +14,7 @@ class AdvancedSearch extends React.Component {
   }
 
 handleAdvancedLight (light) {
-  this.state.advancedClicked = true;
+  this.props.advancedClicked = true;
     fetch(`http://localhost:3004/api/v1/plants/search_light/${light}`)
     .then (res => res.json())
     .then((plants) => {
@@ -50,10 +49,10 @@ handleAdvancedLight (light) {
 }
 
   render () { 
-    if (this.state.advancedClicked === true) {
+    if (this.props.advancedClicked === true) {
       return(
         <div>
-          <AdvancedSearchTile advancedClicked={this.props.advancedClicked} lightData={this.state.lightData}/>
+          <AdvancedSearchTable advancedClicked={this.props.advancedClicked} lightData={this.state.lightData}/>
         </div>
       )
     } else {

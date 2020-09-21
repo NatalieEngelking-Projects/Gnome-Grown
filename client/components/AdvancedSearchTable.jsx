@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AdvancedSearchTile extends React.Component {
+class AdvancedSearchTable extends React.Component {
   constructor(props) {
     super(props);
 
@@ -8,7 +8,7 @@ class AdvancedSearchTile extends React.Component {
 
   ////ISSUES WITH THE CONDITIONAL RENDERING 
   render() {
-    if (this.props.advancedClicked === false) {
+    if (this.props.advancedClicked === true) {
       return (
         <div>
           <table className='plantTable table-bordered table-striped table-dark' >
@@ -40,7 +40,7 @@ class AdvancedSearchTile extends React.Component {
   }
 }
 
-export default AdvancedSearchTile;
+export default AdvancedSearchTable;
 
         {/* generate information on advanced search
         //image
