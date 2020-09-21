@@ -13,7 +13,6 @@ class App extends React.Component {
       plantData: [],
       divisionData: [],
       searchData: {},
-      advancedSearchData: [],
       advancedClicked: false,
     }
     this.handleChange = this.handleChange.bind(this)
@@ -55,8 +54,8 @@ class App extends React.Component {
         <div className='gardenbox pos-30 topright'></div>
         <img className='logo' src={image}/>
         <div className='header'>Gnome-Grown</div>
-          <AdvancedSearch plantData={this.state.plantData} searchData={this.state.searchData} advancedClicked={this.state.advancedClicked} advancedSearchData={this.state.advancedSearchData} filterShadeTolerance={this.filterShadeTolerance} advancedClick={this.state.advancedClick}/>
-          <Search plantData={this.state.plantData} searchData={this.state.searchData} handleChange={this.state.handleChange} handleSubmit={this.state.handleSubmit} searchInput={this.state.searchInput} advancedSearch={this.state.advancedSearch}/>
+          <AdvancedSearch plantData={this.state.plantData} searchData={this.state.searchData} advancedClicked={this.state.advancedClicked} />
+          <Search plantData={this.state.plantData} searchData={this.state.searchData} advancedClicked={this.state.advancedClicked} handleChange={this.state.handleChange} handleSubmit={this.state.handleSubmit} searchInput={this.state.searchInput} advancedSearch={this.state.advancedSearch}/>
         <div className='gardenbox pos-30 bottomleft'></div>
         <div className='gardenbox neg-30 bottomright'></div>
       </div>

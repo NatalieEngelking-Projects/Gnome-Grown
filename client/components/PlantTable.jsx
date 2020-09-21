@@ -3,11 +3,12 @@ import '../dist/main.css';
 
 class PlantTable extends React.Component {
   constructor(props) {
-    super(props)
+    super(props) 
+    console.log(this.props)
   }
 
   render() {
-    if (this.props.clicked === true ) {
+    if (this.props.clicked === true || this.props.advancedClick === true) {
       return null
     } else {
     return (

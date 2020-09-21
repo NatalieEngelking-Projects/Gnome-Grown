@@ -14,7 +14,6 @@ class AdvancedSearch extends React.Component {
   }
 
 handleAdvancedLight (light) {
-  this.props.advancedClicked = true;
     fetch(`http://localhost:3004/api/v1/plants/search_light/${light}`)
     .then (res => res.json())
     .then((plants) => {
@@ -26,6 +25,7 @@ handleAdvancedLight (light) {
           .then((plantData) => {
             console.log(plantData)
             this.setState({
+              advancedClicked: true,
               lightData: {
               id: plantData.data.id, 
               common_name: plantData.data.common_name, 
@@ -49,10 +49,10 @@ handleAdvancedLight (light) {
 }
 
   render () { 
-    if (this.props.advancedClicked === true) {
+    if (this.state.advancedClicked === true) {
       return(
         <div>
-          <AdvancedSearchTable advancedClicked={this.props.advancedClicked} lightData={this.state.lightData}/>
+          <AdvancedSearchTable advancedClicked={this.state.advancedClicked} lightData={this.state.lightData}/>
         </div>
       )
     } else {

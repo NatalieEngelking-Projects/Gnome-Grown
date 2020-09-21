@@ -51,8 +51,6 @@ handleTableClick (name) {
   //refactor for when you click on the plant
   handleSubmit (e) {
     e.preventDefault()
-    console.log('---------------')
-    console.log(this.props.searchInput)
           this.state.clicked = true;
           fetch(`http://localhost:3004/api/v1/plants/search/${this.props.searchInput}`)
           .then (res => res.json())
@@ -94,8 +92,7 @@ handleTableClick (name) {
           <input className='searchInput' type='text' name='search' onChange={this.props.handleChange}/>
           <input className='searchSubmit' type='submit' value='Search' onClick={this.handleSubmit}/>
         </form>
-        <PlantTable clicked={this.state.clicked} plantData={this.props.plantData}  advancedSearch={this.props.advancedSearch} handleSubmit={this.handleSubmit} 
-        handleTableClick={this.handleTableClick} plantName={this.state.plantName}/>
+        <PlantTable clicked={this.state.clicked} plantData={this.props.plantData}  advancedSearch={this.props.advancedSearch} advancedClicked={this.props.advancedClicked} handleSubmit={this.handleSubmit} handleTableClick={this.handleTableClick} plantName={this.state.plantName}/>
         <PlantTile clicked={this.state.clicked} plantData={this.props.plantData} searchData={this.state.searchData} />
       </div>
     )
