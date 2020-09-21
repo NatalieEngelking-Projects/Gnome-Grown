@@ -9,7 +9,6 @@ class FilterSearch extends React.Component {
     this.state = {
       searchData: {},
       advancedSearchData: [],
-      advancedClick: false,
     }
     // this.filterShadeTolerance = this.filterShadeTolerance.bind(this))
   }

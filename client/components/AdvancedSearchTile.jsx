@@ -6,10 +6,9 @@ class AdvancedSearchTile extends React.Component {
 
   }
 
+  ////ISSUES WITH THE CONDITIONAL RENDERING 
   render() {
-    if (this.props.advancedClicked === false ) {
-      return null
-    } else {
+    if (this.props.advancedClicked === false) {
       return (
         <div>
           <table className='plantTable table-bordered table-striped table-dark' >
@@ -20,7 +19,7 @@ class AdvancedSearchTile extends React.Component {
                 <td className='scientificName'>Scientific Name</td>
               </tr>
             </thead>
-            <tbody className='tableBody'>
+            {/* <tbody className='tableBody'>
               {this.props.plantData.map((each, i) => {
               return (
                 <tr key={i}>         
@@ -30,10 +29,13 @@ class AdvancedSearchTile extends React.Component {
                 </tr>
                 )
               })}
-            </tbody>
+            </tbody> */}
           </table>
         </div>
       )
+      
+    } else {
+      return null
     }
   }
 }
