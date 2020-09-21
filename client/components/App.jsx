@@ -1,5 +1,6 @@
 import React from 'react';
-import FilterSearch from './FilterSearch.jsx';
+import AdvancedSearch from './AdvancedSearch.jsx';
+import Search from './Search.jsx'
 import image from '!!file-loader!./66487570.jpg';
 import '../dist/main.css';
 
@@ -12,6 +13,8 @@ class App extends React.Component {
       advancedSearch: false,
       plantData: [],
       divisionData: [],
+      searchData: {},
+      advancedSearchData: [],
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -52,8 +55,8 @@ class App extends React.Component {
         <div className='gardenbox pos-30 topright'></div>
         <img className='logo' src={image}/>
         <div className='header'>Gnome-Grown</div>
-          <FilterSearch plantData={this.state.plantData} searchInput={this.state.searchInput} searchData={this.state.searchData} advancedSearch={this.state.advancedSearch}
-          handleChange={this.handleChange} handleSubmit={this.handleSubmit} handleClick={this.handleChange}/>
+          <AdvancedSearch plantData={this.state.plantData} searchData={this.state.searchData} advancedSearch={this.state.advancedSearch} advancedSearchData={this.state.advancedSearchData} filterShadeTolerance={this.filterShadeTolerance} advancedClick={this.state.advancedClick}/>
+          <Search plantData={this.state.plantData} searchData={this.state.searchData} handleChange={this.state.handleChange} handleSubmit={this.state.handleSubmit} searchInput={this.state.searchInput} advancedSearch={this.state.advancedSearch}/>
         <div className='gardenbox pos-30 bottomleft'></div>
         <div className='gardenbox neg-30 bottomright'></div>
       </div>

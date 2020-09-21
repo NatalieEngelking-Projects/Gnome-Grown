@@ -50,7 +50,7 @@ handleAdvancedLight (light) {
 }
 
   render () { 
-    if (this.props.advancedClicked === true) {
+    if (this.state.advancedClicked === true) {
       return(
         <div>
           <AdvancedSearchTile advancedClicked={this.props.advancedClicked} lightData={this.state.lightData}/>
