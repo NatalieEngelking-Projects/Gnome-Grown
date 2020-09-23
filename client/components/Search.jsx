@@ -58,8 +58,7 @@ handleTableClick (name) {
   //refactor for when you click on the plant
   handleSubmit (e) {
     e.preventDefault()
-          this.state.clicked = true;
-          fetch(`http://localhost:3004/api/v1/plants/search/${this.props.searchInput}`)
+          fetch(`http://localhost:3004/api/v1/plants/search_commonName/${this.props.searchInput}`)
           .then (res => res.json())
           .then ((plant) => {
             console.log(plant)
@@ -70,6 +69,7 @@ handleTableClick (name) {
             .then((plantData) => {
               console.log(plantData)
               this.setState({
+                clicked: true,
                 searchData: {
                   id: plantData.data.id, 
                   common_name: plantData.data.common_name, 
