@@ -49,7 +49,7 @@ handleAdvancedLight (light) {
 }
 
   render () { 
-    if (this.state.advancedClicked === true) {
+    if (this.props.advancedClicked === true) {
       return(
         <div>
           <AdvancedSearchTable advancedClicked={this.state.advancedClicked} lightData={this.state.lightData}/>

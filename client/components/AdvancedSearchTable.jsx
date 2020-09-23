@@ -6,7 +6,6 @@ class AdvancedSearchTable extends React.Component {
 
   }
 
-  ////ISSUES WITH THE CONDITIONAL RENDERING 
   render() {
     if (this.props.advancedClicked === true) {
       return (

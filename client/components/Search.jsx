@@ -16,6 +16,13 @@ class Search extends React.Component {
     this.handleTableClick = this.handleTableClick.bind(this)
   }
 
+  fixCapitalize () {
+    this.state.plantData.map((each) => {
+      
+    })
+  }
+  
+
 handleTableClick (name) {
   console.log(name)
   this.state.clicked = true;
