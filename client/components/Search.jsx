@@ -18,7 +18,7 @@ class Search extends React.Component {
 
   fixCapitalize () {
     this.state.plantData.map((each) => {
-      
+
     })
   }
   

@@ -56,8 +56,8 @@ class App extends React.Component {
         <div className='gardenbox pos-30 topright'></div>
         <img className='logo' src={image}/>
         <div className='header'>Gnome-Grown</div>
-          <AdvancedSearch plantData={this.state.plantData} searchData={this.state.searchData} advancedClicked={this.state.advancedClicked} />
-          <Search plantData={this.state.plantData} searchData={this.state.searchData} advancedClicked={this.state.advancedClicked} handleChange={this.handleChange} handleSubmit={this.handleSubmit} searchInput={this.state.searchInput} />
+          <AdvancedSearch plantData={this.state.plantData} searchData={this.state.searchData} advancedClicked={this.state.advancedClicked} advancedSearch={this.state.advancedSearch}/>
+          <Search plantData={this.state.plantData} searchData={this.state.searchData} advancedSearch={this.state.advancedSearch} handleChange={this.handleChange} handleSubmit={this.handleSubmit} searchInput={this.state.searchInput} />
         <div className='gardenbox pos-30 bottomleft'></div>
         <div className='gardenbox neg-30 bottomright'></div>
       </div>

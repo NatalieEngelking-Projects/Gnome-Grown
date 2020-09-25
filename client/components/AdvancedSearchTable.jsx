@@ -18,17 +18,20 @@ class AdvancedSearchTable extends React.Component {
                 <td className='scientificName'>Scientific Name</td>
               </tr>
             </thead>
-            {/* <tbody className='tableBody'>
-              {this.props.plantData.map((each, i) => {
+            <tbody className='tableBody'>
+              {this.props.lightData.map((each, i) => {
               return (
                 <tr key={i}>         
                   <td className='image'> <img className='Image' src={each.image_url} /> </td>
-                  <td className='commonName' onClick={(e) => {e.preventDefault(); this.props.handleTableClick(each.common_name)}}>{each.common_name}</td>
+                  <td className='commonName' 
+                  // onClick={(e) => {e.preventDefault(); this.props.handleTableClick(each.common_name)}}
+                  >{each.common_name}</td>
                   <td className='scientificName'>{each.scientific_name}</td>
+                  <td className='lightData'>{each.growth.light}</td>
                 </tr>
                 )
               })}
-            </tbody> */}
+            </tbody>
           </table>
         </div>
       )
