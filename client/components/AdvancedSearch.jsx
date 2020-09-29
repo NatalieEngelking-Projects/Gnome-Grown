@@ -14,7 +14,6 @@ class AdvancedSearch extends React.Component {
   }
 
 handleAdvancedLight (light) {
-  this.props.advancedClicked = true;
     fetch(`http://localhost:3004/api/v1/plants/search_light/${light}`)
     .then (res => res.json())
     .then((plants) => {
@@ -26,7 +25,6 @@ handleAdvancedLight (light) {
           .then((plantData) => {
             console.log(plantData)
             this.setState({
-              advancedClicked: true,
               lightData: {
               id: plantData.data.id, 
               common_name: plantData.data.common_name, 
@@ -50,11 +48,10 @@ handleAdvancedLight (light) {
 }
 
   render () { 
-    console.log(this.props.advancedClicked)
     if (this.props.advancedClicked === true) {
       return(
         <div>
-          <AdvancedSearchTable advancedClicked={this.state.advancedClicked} lightData={this.state.lightData}/>
+          <AdvancedSearchTable advancedClicked={this.props.advancedClicked} lightData={this.state.lightData}/>
         </div>
       )
     } else {
@@ -64,7 +61,7 @@ handleAdvancedLight (light) {
             <Dropdown.Item className='dropdownItem' href='#/climate' >Climate</Dropdown.Item>
               {/* <Dropdown.Item onClick={this.props.filterShadeTolerance}>Shade Tolerance </Dropdown.Item> */}
             <Dropdown.Item href=''>Toxicity</Dropdown.Item>
-            <Dropdown.Item href='#/lightTolerance' onClick={(e) => {e.preventDefault(); this.handleAdvancedLight(1)}}>Light Tolerance </Dropdown.Item>
+            <Dropdown.Item href='#/lightTolerance' onClick={(e) => {e.preventDefault(); this.handleAdvancedLight(1); this.props.handleAdvancedClicked();}} >Light Tolerance </Dropdown.Item>
             <Dropdown.Item href='#/lifespan'>Lifespan</Dropdown.Item>
             <Dropdown.Item href='#/duration'>Duration</Dropdown.Item>
                 {/* gonna need a sub filter for product type */}

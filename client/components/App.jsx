@@ -7,6 +7,7 @@ import '../dist/main.css';
 
 class App extends React.Component {
   constructor(props) {
+
     super(props);
     this.state = {
       searchInput: '',
@@ -16,6 +17,7 @@ class App extends React.Component {
       advancedClicked: false,
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleAdvancedClicked = this.handleAdvancedClicked.bind(this)
   }
 
   //gets basic plant data as long as the plants common_name !== null
@@ -34,6 +36,10 @@ class App extends React.Component {
     })
   }
 
+  handleAdvancedClicked () {
+    this.setState({advancedClicked: true})
+  }
+
   //handles common-name search
   handleChange (e) {
     e.preventDefault();
@@ -50,7 +56,7 @@ class App extends React.Component {
         <div className='gardenbox pos-30 topright'></div>
         <img className='logo' src={image}/>
         <div className='header'>Gnome-Grown</div>
-          <AdvancedSearch plantData={this.state.plantData} searchData={this.state.searchData} advancedClicked={this.state.advancedClicked} />
+          <AdvancedSearch plantData={this.state.plantData} searchData={this.state.searchData} advancedClicked={this.state.advancedClicked} handleAdvancedClicked={this.handleAdvancedClicked} />
           <Search plantData={this.state.plantData} advancedClicked={this.state.advancedClicked} searchData={this.state.searchData} handleChange={this.handleChange} searchInput={this.state.searchInput} />
         <div className='gardenbox pos-30 bottomleft'></div>
         <div className='gardenbox neg-30 bottomright'></div>

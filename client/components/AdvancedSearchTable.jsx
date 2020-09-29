@@ -7,6 +7,7 @@ class AdvancedSearchTable extends React.Component {
   }
 
   render() {
+    console.log(this.props.advancedClicked);
     if (this.props.advancedClicked === true) {
       return (
         <div>
@@ -19,7 +20,7 @@ class AdvancedSearchTable extends React.Component {
               </tr>
             </thead>
             <tbody className='tableBody'>
-              {this.props.lightData.map((each, i) => {
+              {/* {this.props.lightData.map((each, i) => {
               return (
                 <tr key={i}>         
                   <td className='image'> <img className='Image' src={each.image_url} /> </td>
@@ -30,7 +31,7 @@ class AdvancedSearchTable extends React.Component {
                   <td className='lightData'>{each.growth.light}</td>
                 </tr>
                 )
-              })}
+              })} */}
             </tbody>
           </table>
         </div>
