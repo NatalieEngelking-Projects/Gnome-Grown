@@ -99,7 +99,7 @@ handleTableClick (name) {
           <input className='searchInput' type='text' name='search' onChange={this.props.handleChange}/>
           <input className='searchSubmit' type='submit' value='Search' onClick={this.handleSubmit}/>
         </form>
-        <PlantTable clicked={this.state.clicked} plantData={this.props.plantData}  advancedSearch={this.props.advancedSearch} advancedClicked={this.props.advancedClicked} handleSubmit={this.handleSubmit} handleTableClick={this.handleTableClick} plantName={this.state.plantName}/>
+        <PlantTable clicked={this.state.clicked} plantData={this.props.plantData}  advancedClicked={this.props.advancedClicked} handleSubmit={this.handleSubmit} handleTableClick={this.handleTableClick} plantName={this.state.plantName}/>
         <PlantTile clicked={this.state.clicked} plantData={this.props.plantData} searchData={this.state.searchData} />
       </div>
     )

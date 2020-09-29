@@ -8,7 +8,7 @@ class PlantTable extends React.Component {
   }
 
   render() {
-    if (this.props.clicked === true || this.props.advancedSearch === true) {
+    if (this.props.clicked === true || this.props.advancedClicked === true) {
       return null
     } else {
     return (

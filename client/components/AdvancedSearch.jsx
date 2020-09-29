@@ -5,7 +5,7 @@ import '../dist/main.css';
 
 class AdvancedSearch extends React.Component {
   constructor(props) {
-    super(props);
+    super (props);
     this.state = {
       lightData: [],
     }
@@ -14,6 +14,7 @@ class AdvancedSearch extends React.Component {
   }
 
 handleAdvancedLight (light) {
+  this.props.advancedClicked = true;
     fetch(`http://localhost:3004/api/v1/plants/search_light/${light}`)
     .then (res => res.json())
     .then((plants) => {
@@ -49,6 +50,7 @@ handleAdvancedLight (light) {
 }
 
   render () { 
+    console.log(this.props.advancedClicked)
     if (this.props.advancedClicked === true) {
       return(
         <div>
