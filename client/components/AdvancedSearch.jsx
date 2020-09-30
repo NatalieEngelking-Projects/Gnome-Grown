@@ -7,9 +7,8 @@ class AdvancedSearch extends React.Component {
   constructor(props) {
     super (props);
     this.state = {
-      lightData: [],
+      lightData: {},
     }
-    console.log(props)
     this.handleAdvancedLight = this.handleAdvancedLight.bind(this);
   }
 
@@ -23,23 +22,8 @@ handleAdvancedLight (light) {
         fetch(`http://localhost:3004/api/plants/${each.id}`)
           .then (res => res.json())
           .then((plantData) => {
-            console.log(plantData)
             this.setState({
-              lightData: {
-              id: plantData.data.id, 
-              common_name: plantData.data.common_name, 
-              family_common_name: plantData.data.family_common_name,
-              scientific_name: plantData.data.scientific_name,
-              duration: plantData.data.main_species.specifications.duration,
-              shape_and_orientation: plantData.data.main_species.specifications.shape_and_orientation,
-              toxicity: plantData.data.main_species.specifications.toxicity,
-              specifications: plantData.data.main_species.specifications,
-              growth: plantData.data.main_species.growth,
-              fruit_or_seed: plantData.data.main_species.fruit_or_seed,
-              foliage: plantData.data.main_species.foliage,
-              flower: plantData.data.main_species.flower,
-              image: plantData.data.image_url,
-              }
+              lightData: plantData,
             })
           })
       })

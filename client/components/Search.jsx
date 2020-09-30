@@ -93,6 +93,9 @@ handleTableClick (name) {
   
 
   render() {
+    if (this.props.advancedClicked === true) {
+      return null;
+    } else {
     return (
       <div>
         <form>
@@ -103,6 +106,7 @@ handleTableClick (name) {
         <PlantTile clicked={this.state.clicked} plantData={this.props.plantData} searchData={this.state.searchData} />
       </div>
     )
+    }
   }
 
 }

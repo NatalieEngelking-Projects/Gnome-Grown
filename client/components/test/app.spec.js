@@ -12,3 +12,11 @@ describe('App', () => {
     expect(text.text()).toBe('Creation Station');
   })
 })
+
+
+
+// test if initial plant data is there
+//test if search input bar works
+//test if onclick for plantTable common name works
+//test if light table renders
+//test if 
