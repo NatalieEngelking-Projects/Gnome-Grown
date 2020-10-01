@@ -7,7 +7,7 @@ class AdvancedSearch extends React.Component {
   constructor(props) {
     super (props);
     this.state = {
-      lightData: {},
+      lightData: [],
     }
     this.handleAdvancedLight = this.handleAdvancedLight.bind(this);
   }
@@ -16,22 +16,23 @@ handleAdvancedLight (light) {
     fetch(`http://localhost:3004/api/v1/plants/search_light/${light}`)
     .then (res => res.json())
     .then((plants) => {
-      console.log(plants)
 //// THE ID SEARCH
       plants.data.map((each) => {
         fetch(`http://localhost:3004/api/plants/${each.id}`)
           .then (res => res.json())
-          .then((plantData) => {
-            this.setState({
-              lightData: plantData,
+          .then((plantsData) => {
+            console.log(plantsData)
+            plantsData.data.map((eachPlant) => {
+              this.setState({ lightData: [...this.state.lightData, eachPlant] }) 
             })
           })
       })
-  })
+    })
   .catch (err => console.log(err))
 }
 
   render () { 
+    // console.log(this.state.lightData)
     if (this.props.advancedClicked === true) {
       return(
         <div>

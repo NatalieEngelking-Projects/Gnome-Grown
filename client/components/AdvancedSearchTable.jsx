@@ -3,7 +3,7 @@ import React from 'react';
 class AdvancedSearchTable extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props)
+    // console.log(this.props)
 
   }
 
@@ -11,6 +11,7 @@ class AdvancedSearchTable extends React.Component {
     if (this.props.advancedClicked === false) {
       return null;
     } else {
+      // console.log(this.props.lightData.data)
       return (
         <div>
             <table className='plantTable table-bordered table-striped table-dark' >
