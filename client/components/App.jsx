@@ -25,6 +25,7 @@ class App extends React.Component {
     fetch('http://localhost:3004/api/v1/plants')
     .then(res => res.json())
     .then((plantsData) => {
+      console.log(plantsData)
       plantsData.data.map((eachPlant) => {
         if (eachPlant.common_name !== null && this.state.plantData.length <= 30) {
           this.setState({ plantData: [...this.state.plantData, eachPlant] })

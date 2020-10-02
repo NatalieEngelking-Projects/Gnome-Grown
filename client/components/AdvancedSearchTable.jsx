@@ -11,7 +11,6 @@ class AdvancedSearchTable extends React.Component {
     if (this.props.advancedClicked === false) {
       return null;
     } else {
-      // console.log(this.props.lightData.data)
       return (
         <div>
             <table className='plantTable table-bordered table-striped table-dark' >
@@ -24,6 +23,7 @@ class AdvancedSearchTable extends React.Component {
           </thead>
           <tbody className='tableBody'>
           {this.props.lightData.map((each, i) => {
+            console.log(this.props.lightData)
           return (
             <tr key={i}>         
               <td className='image'> <img className='Image' src={each.image_url} /> </td>

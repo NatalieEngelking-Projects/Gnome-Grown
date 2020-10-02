@@ -22,9 +22,7 @@ handleAdvancedLight (light) {
           .then (res => res.json())
           .then((plantsData) => {
             console.log(plantsData)
-            plantsData.data.map((eachPlant) => {
-              this.setState({ lightData: [...this.state.lightData, eachPlant] }) 
-            })
+              this.setState({ lightData: [...this.state.lightData, plantsData.data] }) 
           })
       })
     })
